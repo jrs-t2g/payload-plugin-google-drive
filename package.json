@@ -1,6 +1,6 @@
 {
   "name": "payload-plugin-google-drive",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Payload CMS plugin: pick Google Sheets with the Google Picker and import them into an owner-only upload collection.",
   "keywords": [
     "payload",
