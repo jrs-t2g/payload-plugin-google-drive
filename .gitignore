@@ -1,0 +1,18 @@
+node_modules
+dist
+*.tsbuildinfo
+*.tgz
+.env
+.env.*
+!.env.example
+.DS_Store
+
+# Dev instance (dev/)
+dev/.next
+dev/next-env.d.ts
+dev/AGENTS.md
+dev/CLAUDE.md
+dev/payload-types.ts
+dev/media
+dev/*.db
+dev/*.db-*

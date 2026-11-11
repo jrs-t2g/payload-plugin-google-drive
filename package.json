@@ -1,0 +1,92 @@
+{
+  "name": "payload-plugin-google-drive",
+  "version": "0.1.0",
+  "description": "Payload CMS plugin: pick Google Sheets with the Google Picker and import them into an owner-only upload collection.",
+  "keywords": [
+    "payload",
+    "payload-plugin",
+    "payloadcms",
+    "google-drive",
+    "google-picker",
+    "google-sheets"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrs-t2g/payload-plugin-google-drive.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jrs-t2g/payload-plugin-google-drive/issues"
+  },
+  "homepage": "https://github.com/jrs-t2g/payload-plugin-google-drive#readme",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/exports/client.d.ts",
+      "import": "./dist/exports/client.js",
+      "default": "./dist/exports/client.js"
+    },
+    "./types": {
+      "types": "./dist/exports/types.d.ts",
+      "import": "./dist/exports/types.js",
+      "default": "./dist/exports/types.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "pnpm clean && tsc -p tsconfig.build.json",
+    "clean": "rimraf dist",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev dev --webpack",
+    "dev:build": "cross-env NODE_OPTIONS=--no-deprecation next build dev --webpack",
+    "dev:generate-importmap": "cross-env NODE_OPTIONS=--no-deprecation PAYLOAD_CONFIG_PATH=./dev/payload.config.ts payload generate:importmap",
+    "dev:generate-types": "cross-env NODE_OPTIONS=--no-deprecation PAYLOAD_CONFIG_PATH=./dev/payload.config.ts payload generate:types",
+    "dev:payload": "cross-env NODE_OPTIONS=--no-deprecation PAYLOAD_CONFIG_PATH=./dev/payload.config.ts payload",
+    "dev:types": "tsc -p dev/tsconfig.json --noEmit",
+    "lint:types": "tsc --noEmit",
+    "test": "vitest run",
+    "test:int": "vitest run --config vitest.int.config.ts",
+    "prepublishOnly": "pnpm lint:types && pnpm test && pnpm build"
+  },
+  "peerDependencies": {
+    "@payloadcms/ui": ">=3.0.0 <4",
+    "next": ">=15",
+    "payload": ">=3.0.0 <4",
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@payloadcms/db-sqlite": "3.91.0",
+    "@payloadcms/next": "3.91.0",
+    "@payloadcms/richtext-lexical": "3.91.0",
+    "@payloadcms/ui": "3.91.0",
+    "@types/node": "22.19.9",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "cross-env": "^10.1.0",
+    "dotenv": "^18.0.9",
+    "fflate": "^0.8.3",
+    "graphql": "16.8.2",
+    "next": "16.3.3",
+    "payload": "3.91.0",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "rimraf": "^6.0.1",
+    "typescript": "5.9.3",
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "read-excel-file": "9.3.14"
+  }
+}
